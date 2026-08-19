@@ -15,6 +15,7 @@ find_package(pluginlib REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(rviz_common REQUIRED)
 find_package(rviz_default_plugins REQUIRED)
+find_package(rviz_ogre_vendor REQUIRED)
 
 set(CMAKE_AUTOMOC ON)
 
@@ -42,6 +43,14 @@ add_library(${PROJECT_NAME}
 target_include_directories(${PROJECT_NAME} PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:include>
+)
+
+target_include_directories(${PROJECT_NAME} SYSTEM PUBLIC
+  "${rviz_ogre_vendor_DIR}/../../../opt/rviz_ogre_vendor/include"
+)
+
+target_link_libraries(${PROJECT_NAME}
+  rviz_ogre_vendor::OgreMain
 )
 
 ament_target_dependencies(${PROJECT_NAME}
