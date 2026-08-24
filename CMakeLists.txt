@@ -14,6 +14,7 @@ find_package(marine_colormap REQUIRED)
 find_package(pluginlib REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(rviz_common REQUIRED)
+find_package(sensor_msgs REQUIRED)
 find_package(rviz_default_plugins REQUIRED)
 find_package(rviz_ogre_vendor REQUIRED)
 
@@ -60,6 +61,7 @@ ament_target_dependencies(${PROJECT_NAME}
   "rviz_common"
   "rviz_default_plugins"
   "rclcpp"
+  "sensor_msgs"
 )
 
 install (TARGETS ${PROJECT_NAME}

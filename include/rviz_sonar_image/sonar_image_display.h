@@ -5,6 +5,9 @@
 #include "marine_acoustic_msgs/msg/raw_sonar_image.hpp"
 #include "rviz_common/properties/float_property.hpp"
 
+#include <rclcpp/publisher.hpp>
+#include <sensor_msgs/msg/image.hpp>
+
 #include "rviz_sonar_image/sonar_image_fan.h"
 #include "rviz_sonar_image/sonar_image_curtain.h"
 #include "rviz_sonar_image/color_map.h"
@@ -49,6 +52,9 @@ private:
 
   float minimum_data_value_ = std::numeric_limits<float>::max();
   float maximum_data_value_ = std::numeric_limits<float>::lowest();
+
+  rclcpp::Publisher<sensor_msgs::msg::Image>::SharedPtr image_pub_;
+  rclcpp::Publisher<sensor_msgs::msg::Image>::SharedPtr cartesian_image_pub_;
 };
 
 } // namespace rviz_sonar_image
